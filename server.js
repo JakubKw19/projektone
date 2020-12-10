@@ -36,9 +36,19 @@ app.get("/logout", function (req, res) {
 })
 
 app.post("/register", function (req, res) {
-    counter = counter + 1;
-    users.push({ id: counter, login: req.body.login, passwd: req.body.passwd, age: req.body.age, uczen: req.body.uczen, plec: req.body.plec })
-    res.send("Witaj " + req.body.login + ", jesteś zarejestrowany")
+    checkIfLogged = false;
+    for (i = 0; i < users.length; i++) {
+        if (req.body.login == users[i].login) {
+            checkIfLogged = true;
+        }
+    }
+    if (checkIfLogged != true) {
+        counter = counter + 1;
+        users.push({ id: counter, login: req.body.login, passwd: req.body.passwd, age: req.body.age, uczen: req.body.uczen, plec: req.body.plec })
+        res.send("Witaj " + req.body.login + ", jesteś zarejestrowany")
+    } else {
+        res.send("Taki user już istnieje zmień login")
+    }
 })
 
 app.post("/admin", function (req, res) {

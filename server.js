@@ -61,6 +61,8 @@ app.post("/admin", function (req, res) {
     if (condition == true) {
         admintrue = true;
         res.redirect("/admin")
+    } else {
+        res.send("Błędny login lub hasło")
     }
 })
 

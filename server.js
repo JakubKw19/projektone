@@ -56,6 +56,9 @@ app.post("/admin", function (req, res) {
 
 app.get("/show", function (req, res) {
     if (admintrue == true) {
+        users.sort(function (a, b) {
+            return parseFloat(a.id) - parseFloat(b.id)
+        })
         tr = "";
         tab = "";
         inputuser = "";
@@ -85,6 +88,9 @@ app.get("/show", function (req, res) {
 
 app.get("/gender", function (req, res) {
     if (admintrue == true) {
+        users.sort(function (a, b) {
+            return parseFloat(a.id) - parseFloat(b.id)
+        })
         trk = "";
         trm = "";
         tabk = "";
